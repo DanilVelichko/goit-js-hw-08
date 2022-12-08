@@ -20,7 +20,12 @@ const galleryContainer = document.querySelector('.gallery');
 const cardsMarkup = createPhotoRender(galleryItems);
 galleryContainer.insertAdjacentHTML('beforeend', cardsMarkup); 
 
-let lightbox = $('.gallery a').simpleLightbox({ /* options */ });
+ new SimpleLightbox('.gallery a', {
+      'captionType': "attr",
+     'captionsData': "alt",
+     'captionPosition': "bottom",
+    'captionDelay': 250,
+    });
 
 console.log(galleryItems);
 
