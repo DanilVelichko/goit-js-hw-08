@@ -1,2 +1,0 @@
-const e=document.querySelector("iframe"),o=new Vimeo.Player(e);o.on("play",(function(){console.log("played the video!")})),o.getVideoTitle().then((function(e){console.log("title:",e)})),o.on("timeupdate",(function(e){})),jQuery(window).on("scroll",_.throttle(updatePosition,1e3));let t=_.throttle(renewToken,3e5,{trailing:!1});jQuery(element).on("click",t),jQuery(window).on("popstate",t.cancel);
-//# sourceMappingURL=02-video.5c249651.js.map
