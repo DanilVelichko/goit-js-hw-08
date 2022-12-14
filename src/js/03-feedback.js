@@ -18,7 +18,6 @@ const load = key => {
   }
 };
 
-
 const STORAGE_KEY = 'feedback-form-state';
 const localParse = load(STORAGE_KEY);
 const inputObject = {};
@@ -47,7 +46,6 @@ function onFormInput (e) {
     save(STORAGE_KEY, inputObject);
     
 };
-
 
 function formOutput() {
     if (localParse) {
