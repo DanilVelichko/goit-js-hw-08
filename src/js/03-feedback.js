@@ -1,7 +1,26 @@
 import throttle from 'lodash.throttle';
 
+const save = (key, value) => {
+  try {
+    const serializedState = JSON.stringify(value);
+    localStorage.setItem(key, serializedState);
+  } catch (error) {
+    console.error("Set state error: ", error.message);
+  }
+};
+
+const load = key => {
+  try {
+    const serializedState = localStorage.getItem(key);
+    return serializedState === null ? undefined : JSON.parse(serializedState);
+  } catch (error) {
+    console.error("Get state error: ", error.message);
+  }
+};
+
+
 const STORAGE_KEY = 'feedback-form-state';
-const localParse = JSON.parse(localStorage.getItem(STORAGE_KEY));
+const localParse = load(STORAGE_KEY);
 const inputObject = {};
 const refs = {
     form: document.querySelector('.feedback-form'),
@@ -25,7 +44,8 @@ function onFormSubmit(e) {
 
 function onFormInput (e) {
     inputObject[e.target.name] = e.target.value;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(inputObject));
+    save(STORAGE_KEY, inputObject);
+    
 };
 
 
@@ -38,3 +58,5 @@ function formOutput() {
         refs.textarea.value = localParse.message;
     }
 }
+
+
